@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    use HasFactory;
+    protected $table = "categories";
+    protected $primaryKey = "id";
+    public $timestamps = false;
 }
+
