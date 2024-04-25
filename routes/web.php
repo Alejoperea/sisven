@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
  Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
  Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
  Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
- Route::delete('/categorias({categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+ Route::delete('/categorias/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
  Route::put('/categorias/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
  Route::get('/categorias/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
 
@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 Route::post('/paymodes', [PaymodeController::class, 'store'])->name('paymodes.store');
 Route::get('/paymodes/create', [PaymodeController::class, 'create'])->name('paymodes.create');
 Route::delete('/paymodes/{paymode}', [PaymodeController::class, 'destroy'])->name('paymodes.destroy');
+Route::put('/paymodes/{paymode}', [PaymodeController::class, 'update'])->name('paymodes.update');
+Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name('paymodes.edit');
 });
 
 

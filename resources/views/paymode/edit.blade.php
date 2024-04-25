@@ -11,27 +11,35 @@
     <title>Add Paymode</title>
 </head>
 <body>
-    <x-app-layout>
+<x-app-layout>
 <div class="container">
-    <h1 class="text-center">Agregar PayMode</h1>
-    <form method="POST" action="{{ route('paymodes.store') }}">
+    <h1 class="text-center">Editar Paymode</h1>
+    <form method="POST" action="{{ route('paymodes.update',['paymode' => $paymode->id]) }}">
+        @method('put')
         @csrf
-
+        <div class="mb-3">
+            {{-- <label for="id" class="form-label">Id</label> --}}
+            <input type="hidden" class="form-control" id="id" name="id" value="{{ $paymode->id }}" disabled>
+            {{-- <div id="idHelp" class="form-text">Código</div> --}} 
+        </div>
+    
         <div class="mb-3">
             <label for="Name" class="form-label">Name</label>
-            <input type="text" required class="form-control" id="Name" aria-describedby="nameHelp" name="Name" placeholder="Name">
+            <input type="text" required class="form-control" id="Name" name="Name" value="{{ $paymode->Name }}" placeholder="Nombre">
         </div>
         
         <div class="mb-3">
             <label for="Observation" class="form-label">Observation</label>
-            <input type="text" required class="form-control" id="Observation" aria-describedby="ObservationHelp" name="Observation" placeholder="Ubicación">
+            <input type="text" required class="form-control" id="Observation" name="Observation" value="{{ $paymode->Observation }}" placeholder="Observation">
         </div>
-
+    
+    
         <div class="mt-3">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{{ route('paymodes.index') }}" class="btn btn-warning">Cancel</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{{ route('paymodes.index') }}" class="btn btn-warning">Cancelar</a>
         </div>
     </form>
+    
 </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
