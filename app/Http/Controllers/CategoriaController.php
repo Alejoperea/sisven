@@ -73,6 +73,15 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+
+        $categorias = DB::table('categories')
+        ->orderBy('name')
+        ->get();
+
+        return redirect()->route('categorias.index');
+
+        
     }
 }
