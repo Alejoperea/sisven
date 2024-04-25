@@ -24,7 +24,10 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = DB::table('categories')
+        ->orderBy('name')
+        ->get();
+        return view ('categoria.new', ['categorias' => $categorias]);
     }
 
     /**
@@ -32,7 +35,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+
+        $categoria -> name = $request -> name;
+        $categoria -> description = $request-> description;
+        $categoria->save();
+
+        return redirect()->route('categorias.index');
     }
 
     /**
