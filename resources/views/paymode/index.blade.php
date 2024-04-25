@@ -15,7 +15,7 @@
   
     <div class="container">
       <h1 class="text-center">PAY MODE</h1>
-      <a href="{{ route('paymodes.index') }}" class="btn btn-success">Agregar</a>
+      <a href="{{ route('paymodes.create') }}" class="btn btn-success">Agregar</a>
       <table class="table">
           <thead>
             <tr>
@@ -29,9 +29,18 @@
               @foreach ($paymodes as $paymode)
                 <tr>
                   <th scope="row">{{ $paymode->id }}</th>
-                  <td>{{ $paymode->nombre }}</td>
+                  <td>{{ $paymode->name }}</td>
                   <td>{{ $paymode->observation }}</td>
-                  <td><span>Actions</span></td>
+                  <td>
+
+                    <form action="{{route('paymodes.destroy',['paymode' =>$paymode->id])}}"
+                      method='POST' style="display:inline-block">
+                      @method('delete')
+                      @csrf
+                      <input class="btn btn-danger" type="submit" value="Delete">
+                  </form>
+
+                  </td>
                 </tr>
               @endforeach
           </tbody>

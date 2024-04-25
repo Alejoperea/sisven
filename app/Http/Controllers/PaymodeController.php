@@ -21,7 +21,10 @@ class PaymodeController extends Controller
      */
     public function create()
     {
-        //
+        $paymodes = DB::table('paymode')
+        ->orderBy('id')
+        ->get();
+    return view('paymode.new', ['paymodes' => $paymodes]);
     }
 
     /**
@@ -29,7 +32,18 @@ class PaymodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paymode = new Paymode();
+        
+        $paymode->Name = $request->Name;
+        $paymode->Observation = $request->Observation;
+        
+        $paymode->save();
+        
+        $paymodes = DB::table('paymode')
+        ->orderBy('id')
+        ->get();
+        
+        return redirect()->route('paymodes.index');
     }
 
     /**
@@ -61,6 +75,13 @@ class PaymodeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $paymode = Paymode::find($id);
+        $paymode->delete();
+
+        $paymodes = DB::table('paymode')
+        ->orderBy('id')
+        ->get();
+
+        return view('paymode.index',['paymodes' => $paymodes]);
     }
 }
