@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Paymode;
 use Illuminate\Http\Request;
 
 class PaymodeController extends Controller
@@ -11,7 +12,8 @@ class PaymodeController extends Controller
      */
     public function index()
     {
-        //
+        $paymodes = Paymode::all();
+        return view('paymode.index', ['paymodes' => $paymodes]);
     }
 
     /**
