@@ -15,7 +15,7 @@
   <x-app-layout>
     <div class="container">
       <h1 class="text-center">Sistema de Customers</h1>
-      <a href="{{ route('customers.index') }}" class="btn btn-success">Agregar</a>
+      <a href="{{ route('customers.create') }}" class="btn btn-success">Agregar</a>
       <table class="table">
           <thead>
             <tr>

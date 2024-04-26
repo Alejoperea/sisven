@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PaymodeController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,7 +35,9 @@ Route::delete('/paymodes/{paymode}', [PaymodeController::class, 'destroy'])->nam
 Route::put('/paymodes/{paymode}', [PaymodeController::class, 'update'])->name('paymodes.update');
 Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name('paymodes.edit');
 });
-
+Route::get('/customers', [CustomerController::class,'index'])->name('customers.index');
+Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 
 
 

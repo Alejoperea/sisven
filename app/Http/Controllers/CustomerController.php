@@ -22,7 +22,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $customers = DB::table('customers')
+            ->orderBy('id')
+            ->get();
+    return view('customer.new', ['customer' => $customers]);
     }
 
     /**
@@ -30,7 +33,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer();
+        
+        $customer->document_number = $request->document_number;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->address = $request->address;
+        $customer->birthday = $request->birthday;
+        $customer->phone_number = $request->phone_number;
+        $customer->email = $request->email;
+        $customer->save();
+        
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+        
+        return redirect()->route('customers.index');
     }
 
     /**
