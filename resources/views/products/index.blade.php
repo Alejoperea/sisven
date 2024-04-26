@@ -13,7 +13,7 @@
   <body>
     <div class="container">
     <h1>Listado de productos</h1>
-    <a href="{{route('producto.index')}}" class="btn btn-success">Add</a>
+    <a href="{{route('products.create')}}" class="btn btn-success">Add</a>
     <table class="table">
         <thead>
           <tr>

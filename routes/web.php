@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PaymodeController;
+use App\Http\Controllers\ProductoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,9 +34,13 @@ Route::get('/paymodes/create', [PaymodeController::class, 'create'])->name('paym
 Route::delete('/paymodes/{paymode}', [PaymodeController::class, 'destroy'])->name('paymodes.destroy');
 Route::put('/paymodes/{paymode}', [PaymodeController::class, 'update'])->name('paymodes.update');
 Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name('paymodes.edit');
+
+//Ruta productos
+
+
 });
 
-
-
-
+Route::get('/Productos',[ProductoController::class,'index'])->name('products.index');
+Route::post('/Productos', [ProductoController::class, 'store'])->name('products.store');
+Route::get('/Productos/create', [ProductoController::class, 'create'])->name('products.create');
 require __DIR__.'/auth.php';

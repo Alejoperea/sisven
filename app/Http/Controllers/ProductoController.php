@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use  Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -11,8 +12,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
-        return view('products.index',['productos'=>$productos]);
+       /* $productos = Producto::all();
+        return view('products.index',['productos'=>$productos]);*/
+        $productos = DB::table('products')->get();
+
+        return view('products.index', ['productos'=>$productos]);
     }
 
     /**
@@ -20,7 +24,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $productos = DB::table('products')
+        ->orderBy('name')
+        ->get();
+        return view ('products.new', ['productos' => $productos]);
     }
 
     /**
@@ -28,7 +35,15 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto();
+
+        $producto -> name = $request -> name;
+        $producto -> price = $request-> price;
+        $producto -> stock = $request-> stock;
+        $producto -> category_id = $request-> category_id;
+        $producto->save();
+
+        return redirect()->route('products.index');
     }
 
     /**
