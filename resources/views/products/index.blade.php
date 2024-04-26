@@ -22,6 +22,7 @@
             <th scope="col">Price</th>
             <th scope="col">Stock</th>
             <th scope="col">Category</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +34,15 @@
             <td>{{$producto->price}}</td>
             <td>{{$producto->stock}}</td>
             <td>{{$producto->category_id}}</td>
+            <td>
+              
+              <form action="{{route ('products.destroy', ['producto' => $producto->id]) }}"
+                method='POST' style="display: inline-block">
+                @method('delete')
+                @csrf
+                <input class="btn btn-danger" type="Submit" value="Delete">
+              </form>
+            </td>
           </tr>
         
           @endforeach

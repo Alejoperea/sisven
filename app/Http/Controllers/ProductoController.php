@@ -75,6 +75,13 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->delete();
+
+        $productos = DB::table('products')
+        ->orderBy('name')
+        ->get();
+
+        return redirect()->route('products.index');
     }
 }

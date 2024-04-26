@@ -43,4 +43,5 @@ Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name
 Route::get('/Productos',[ProductoController::class,'index'])->name('products.index');
 Route::post('/Productos', [ProductoController::class, 'store'])->name('products.store');
 Route::get('/Productos/create', [ProductoController::class, 'create'])->name('products.create');
+Route::delete('/Productos/{producto}', [ProductoController::class, 'destroy'])->name('products.destroy');
 require __DIR__.'/auth.php';
