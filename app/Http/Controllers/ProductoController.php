@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\DB;
 
@@ -24,10 +25,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $productos = DB::table('products')
-        ->orderBy('name')
-        ->get();
-        return view ('products.new', ['productos' => $productos]);
+        $categorias = Categoria::orderBy('name')->get();
+    return view('products.new', ['categorias' => $categorias]);
     }
 
     /**
@@ -36,14 +35,13 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $producto = new Producto();
+    $producto->name = $request->name;
+    $producto->price = $request->price;
+    $producto->stock = $request->stock;
+    $producto->category_id = $request->category_id;
+    $producto->save();
 
-        $producto -> name = $request -> name;
-        $producto -> price = $request-> price;
-        $producto -> stock = $request-> stock;
-        $producto -> category_id = $request-> category_id;
-        $producto->save();
-
-        return redirect()->route('products.index');
+    return redirect()->route('products.index');
     }
 
     /**
@@ -59,7 +57,9 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        $categorias = Categoria::orderBy('name')->get(); // Obtener todas las categorías
+        return view('products.edit', ['producto' => $producto, 'categorias' => $categorias]);
     }
 
     /**
@@ -67,7 +67,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $producto = Producto::find($id);
+    $producto->name = $request->name;
+    $producto->price = $request->price;
+    $producto->stock = $request->stock;
+    $producto->category_id = $request->category_id;
+    $producto->save();
+
+    return redirect()->route('products.index');
     }
 
     /**

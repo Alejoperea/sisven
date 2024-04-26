@@ -12,37 +12,37 @@
   </head>
   <body>
     <div class ="container">
-    <h1>Add new product</h1> 
-    <form method="POST" action="{{ route('products.store')}}">
-        @csrf
-          <div class="mb-3">
-            <label for="id" class="form-label">Id</label>
-            <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" disabled="disabled">
-            <div id="idHelp" class="form-text"> Id producto</div>
-          </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" required class="form-control" id="name" aria-describedby="nameHelp" name="name" placeholder="Nombre del producto">
-          </div>
-          <div class="mb-3">
-              <label for="description" class="form-label">Precio</label>
-              <input type="text" required class="form-control" id="price" aria-describedby="priceHelp" name="price" placeholder="Precio del producto">
+        <h1>Add new product</h1> 
+        <form method="POST" action="{{ route('products.store')}}">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" required class="form-control" id="name" aria-describedby="nameHelp" name="name" placeholder="Nombre del producto">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Stock</label>
-                <input type="text" required class="form-control" id="stock" aria-describedby="stockHelp" name="stock" placeholder="Precio del producto">
-              </div>
+                <label for="price" class="form-label">Precio</label>
+                <input type="text" required class="form-control" id="price" aria-describedby="priceHelp" name="price" placeholder="Precio del producto">
+            </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Categoria</label>
-                <input type="text" required class="form-control" id="category_id" aria-describedby="category_idHelp" name="category_id" placeholder="Categoria del producto">
-              </div>
-         
-          <div class="mt-3">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <a href="{{ route('products.index') }}" class="btn btn-warning">Cancel</a>
-          </div>
+                <label for="stock" class="form-label">Stock</label>
+                <input type="text" required class="form-control" id="stock" aria-describedby="stockHelp" name="stock" placeholder="Stock del producto">
+            </div>
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Categoría</label>
+                <select class="form-select" id="category_id" name="category_id" required>
+                    <option selected disabled value="">Selecciona una categoría</option>
+                    @foreach ($categorias as $categoria)
+                        <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{{ route('products.index') }}" class="btn btn-warning">Cancelar</a>
+            </div>
         </form>
     </div>
+    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

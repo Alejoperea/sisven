@@ -35,7 +35,8 @@
             <td>{{$producto->stock}}</td>
             <td>{{$producto->category_id}}</td>
             <td>
-              
+              <a href="{{ route('products.edit', ['producto' =>$producto->id]) }}"
+                class="btn btn-info"> Edit </a>
               <form action="{{route ('products.destroy', ['producto' => $producto->id]) }}"
                 method='POST' style="display: inline-block">
                 @method('delete')
