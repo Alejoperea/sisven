@@ -64,7 +64,13 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::find($id);
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.edit',['customer' => $customer,'customers'=> $customers]);
     }
 
     /**
@@ -72,7 +78,22 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer = Customer::find($id);
+       
+        $customer->document_number = $request->document_number;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->address = $request->address;
+        $customer->birthday = $request->birthday;
+        $customer->phone_number = $request->phone_number;
+        $customer->email = $request->email;
+        $customer->save();
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.index',['customers' => $customers]);
     }
 
     /**

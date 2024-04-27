@@ -44,8 +44,8 @@
                   <td><span>Actions</span></td>
                   <td>
 
-                    {{-- <a href="{{route('customers.edit',['customer' => $customer->id])}}"
-                        class="btn btn-info">Edit</a></li> --}}
+                    <a href="{{route('customers.edit',['customer' => $customer->id])}}"
+                        class="btn btn-info">Edit</a></li>
 
                     <form action="{{route('customers.destroy',['customer' =>$customer->id])}}"
                         method='POST' style="display:inline-block">

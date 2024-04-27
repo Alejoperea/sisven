@@ -34,11 +34,16 @@ Route::get('/paymodes/create', [PaymodeController::class, 'create'])->name('paym
 Route::delete('/paymodes/{paymode}', [PaymodeController::class, 'destroy'])->name('paymodes.destroy');
 Route::put('/paymodes/{paymode}', [PaymodeController::class, 'update'])->name('paymodes.update');
 Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name('paymodes.edit');
-});
+
+//Rutas Customers
+
 Route::get('/customers', [CustomerController::class,'index'])->name('customers.index');
 Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+});
 
 
 

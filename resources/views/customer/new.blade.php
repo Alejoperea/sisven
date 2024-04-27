@@ -49,7 +49,7 @@
 
         <div class="mb-3">
             <label for="phone_number" class="form-label">Número de Telefono</label>
-            <input type="text" required class="form-control" id="phone_number" aria-describedby="phone_numberHelp" name="phone_number" placeholder="Número de Telefono">
+            <input type="number" required class="form-control" id="phone_number" aria-describedby="phone_numberHelp" name="phone_number" placeholder="Número de Telefono">
         </div>
 
         <div class="mb-3">
