@@ -38,6 +38,7 @@ Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name
 Route::get('/customers', [CustomerController::class,'index'])->name('customers.index');
 Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
 
 

@@ -80,6 +80,13 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->delete();
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.index',['customers' => $customers]);
     }
 }

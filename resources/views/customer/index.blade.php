@@ -42,19 +42,19 @@
                   <td>{{ $customer->phone_number }}</td>
                   <td>{{ $customer->email }}</td>
                   <td><span>Actions</span></td>
-                  {{-- <td>
+                  <td>
 
-                    <a href="{{route('customers.edit',['customer' => $customer->id])}}"
-                        class="btn btn-info">Edit</a></li>
+                    {{-- <a href="{{route('customers.edit',['customer' => $customer->id])}}"
+                        class="btn btn-info">Edit</a></li> --}}
 
-                    <form action="{{route('customers.destroy',['hotel' =>$customer->id])}}"
+                    <form action="{{route('customers.destroy',['customer' =>$customer->id])}}"
                         method='POST' style="display:inline-block">
                         @method('delete')
                         @csrf
                         <input class="btn btn-danger" type="submit" value="Delete">
                     </form>
 
-                  </td> --}}
+                  </td>
                 </tr>   
               @endforeach
           </tbody>
