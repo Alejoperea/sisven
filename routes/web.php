@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PaymodeController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductoController;
 
 Route::get('/', function () {
@@ -35,9 +36,24 @@ Route::delete('/paymodes/{paymode}', [PaymodeController::class, 'destroy'])->nam
 Route::put('/paymodes/{paymode}', [PaymodeController::class, 'update'])->name('paymodes.update');
 Route::get('/paymodes/{paymode}/edit', [PaymodeController::class, 'edit'])->name('paymodes.edit');
 
+//Rutas Customers
 
+Route::get('/customers', [CustomerController::class,'index'])->name('customers.index');
+Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 
+//Ruta productos
+Route::get('/Productos',[ProductoController::class,'index'])->name('products.index');
+Route::post('/Productos', [ProductoController::class, 'store'])->name('products.store');
+Route::get('/Productos/create', [ProductoController::class, 'create'])->name('products.create');
+Route::delete('/Productos/{producto}', [ProductoController::class, 'destroy'])->name('products.destroy');
+Route::put('/Productos/{producto}', [ProductoController::class, 'update'])->name('products.update');
+Route::get('/Productos/{producto}/edit', [ProductoController::class, 'edit'])->name('products.edit');
 });
+
 
 
 require __DIR__.'/auth.php';

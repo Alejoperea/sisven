@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
@@ -11,7 +13,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return view('customer.index', ['customers' => $customers]);
     }
 
     /**
@@ -19,7 +22,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $customers = DB::table('customers')
+            ->orderBy('id')
+            ->get();
+    return view('customer.new', ['customer' => $customers]);
     }
 
     /**
@@ -27,7 +33,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer();
+        
+        $customer->document_number = $request->document_number;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->address = $request->address;
+        $customer->birthday = $request->birthday;
+        $customer->phone_number = $request->phone_number;
+        $customer->email = $request->email;
+        $customer->save();
+        
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+        
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -43,7 +64,13 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::find($id);
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.edit',['customer' => $customer,'customers'=> $customers]);
     }
 
     /**
@@ -51,7 +78,22 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer = Customer::find($id);
+       
+        $customer->document_number = $request->document_number;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->address = $request->address;
+        $customer->birthday = $request->birthday;
+        $customer->phone_number = $request->phone_number;
+        $customer->email = $request->email;
+        $customer->save();
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.index',['customers' => $customers]);
     }
 
     /**
@@ -59,6 +101,13 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->delete();
+
+        $customers = DB::table('customers')
+        ->orderBy('id')
+        ->get();
+
+        return view('customer.index',['customers' => $customers]);
     }
 }
