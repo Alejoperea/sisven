@@ -11,6 +11,7 @@
     <title>Add new product</title>
   </head>
   <body>
+<x-app-layout>
     <div class ="container">
         <h1>Add new product</h1> 
         <form method="POST" action="{{ route('products.store')}}">
@@ -42,7 +43,7 @@
             </div>
         </form>
     </div>
-    
+</x-app-layout>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
