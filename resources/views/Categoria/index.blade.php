@@ -11,6 +11,7 @@
     <title>Listado de Categorias</title>
   </head>
   <body>
+    <x-app-layout>
     <div class="container">
     <h1>Listado de Categorias</h1>
     <a href="{{ route('categorias.create') }}" class="btn btn-success"> Add Categoria </a>
@@ -43,7 +44,7 @@
     </tbody>
       </table>
     </div>
-
+  </x-app-layout>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

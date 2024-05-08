@@ -27,7 +27,7 @@
               <th scope="col">Fecha de Nacimiento</th>
               <th scope="col">Numero de Telefono</th>
               <th scope="col">Email de Contacto</th>
-              <th scope="col">Acciones</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +41,7 @@
                   <td>{{ $customer->birthday }}</td>
                   <td>{{ $customer->phone_number }}</td>
                   <td>{{ $customer->email }}</td>
-                  <td><span>Actions</span></td>
+                  
                   <td>
 
                     <a href="{{route('customers.edit',['customer' => $customer->id])}}"

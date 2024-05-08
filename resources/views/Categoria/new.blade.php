@@ -11,6 +11,7 @@
     <title>Add Categoria</title>
   </head>
   <body>
+    <x-app-layout>
     <div class="container">
     <h1>Add Categoria</h1>
     <form method="POST" action="{{ route('categorias.store')}}">
@@ -36,7 +37,7 @@
       </form>
     </div>
 
-
+  </x-app-layout>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
